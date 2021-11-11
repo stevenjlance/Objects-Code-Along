@@ -3,33 +3,45 @@ var slance651 = ["Steven", "Lance", 32, "Brown", "Brown", "6 foot 0 inches", 190
 
 // 1. Let's turn this data into a list! A list is a variable, but instead of [ ] we use { }. Each value gets written as a name: value pair and each name: value pair is sperated by a comma. An example object is commented out below.
 
-// var myFirstObject = {
-//   favFood: "Pizza",
-//   favNumber: 8,
-//   favSinger: "Beyonce",
-//   "Home State": "Minnesota",
-// }
-
-
-
-
+var myFirstObject = {
+  favFood: "Pizza",
+  favNumber: 8,
+  favSinger: "Beyonce",
+  "Home State": "Minnesota",
+}
+console.log(myFirstObject.favFood)
+console.log(myFirstObject["Home State"])
+myFirstObject.favFood = "Ramen"
+myFirstObject.favColor = "Blue"
+console.log(myFirstObject)
+delete myFirstObject.favNumber
+console.log(myFirstObject)
 
 // 2. CREATE: Make an object called myInfo and store at least 5 things about yoursel in the list (e.g. First Name, Last Name, etc.). Make sure all name: value pairs are seperated with commans and all name items are enclosed in quotation marks!
-
+var myInfo = {
+	first: "Steven",
+	last: "Lance",
+	city: "Bronx",
+	age: 33,
+	favSinger: "Beyonce"
+}
 
 
 //3. READ: Print out your first name from myInfo using [] notation and you age using . notation
+console.log(myInfo.first)
 
 
 //4. UPDATE: Add your favorite TV show to your myInfo object.
 // Add a key of sport and value of basketball
-
+myInfo.sport = "basketball"
 
 // Update a value in an object
-
+myInfo.age += 1
+console.log(myInfo)
 
 // 5. DELETE: Delete your age from the myInfo object.
-
+delete myInfo.age
+console.log(myInfo)
 
 
 // 6. ITERATE: Print out each person's favorite superhero with a sentence like "steven likes wonder woman", "taylor likes Jessica Jones", etc.)
@@ -42,13 +54,23 @@ var superheroes = {
   shana: "Black Panther"
 }
 
-
+// note that keys are returned as strings so can't use dot notation.
+for(key in superheroes){
+	console.log(`${key} really likes ${superheroes[key]}`)
+}
 
 
 
 
 //7. ITERATE: You want to deliver a special message if the person likes Black Panther. If the person likes Black Panther say "______ loves the best superhero ever: Black Panther" otherwise say "_____ likes ______"
-
+for(key in superheroes){
+	if(superheroes[key] == "Black Panther"){
+		console.log(`${key} likes the best superhero: Black Panther`)
+	}
+	else {
+		console.log(`${key} really likes ${superheroes[key]}`)
+	}
+}
 
 
 
@@ -75,25 +97,59 @@ let motto = ["Don't overthink it.","I guess we'll find out. ","People have catch
 
 // 8. console.log the name of every person who responded to the survey
 
+//for loop version
+for(var i = 0; i < names.length; i++){
+	console.log(names[i])
+}
+// Can use a for in loop here as well
+for(index in names){
+	console.log(names[index])
+}
 
 
 
 // 9. console.log "Hi, my name is _____, and I live in ____." for every person who responded to the survey
-
+for(index in names){
+	console.log(`Hi my name is ${names[index]} and I live in ${state[index]}`)
+}
 
 
 
 
 // 10. Create an empty array and name it shortBios. Inside of shortBios, create an object that stores each respondents name, nickname, and age. Then, console.log shortBios.
-
-
+var shortBios = []
+for(index in names){
+	var person = {}
+	person.name = names[index]
+	person.nickname = nickname[index]
+	person.age = age[index]
+	shortBios.push(person)
+}
+console.log(shortBios)
 
 
 // 11. Add the favorite show and favorite band to each person object inside of the shortBios array. Then, console.log shortBios.
-
-
+// Easiest is to just modify number 10 with new values
+for(var i = 0; i < shortBios.length; i++){
+	shortBios[i].favoriteShow = favoriteShow[i]
+	shortBios[i].favoriteBand = favoriteBand[i]
+}
+console.log(shortBios)
 
 
 
 // 12. Create a new array called longBios. Inside of longBios, create an object that stores each respondents name, nickname, age, favorite show, favorite band, if they are a programmer, the state they live in, their hair color, and their personal bio. Then, console.log longBios.
-
+var longBios = []
+for(index in names){
+	var person = {}
+	person.name = names[index]
+	person.nickname = nickname[index]
+	person.age = age[index]
+	person.favoriteBand = favoriteBand[index]
+	person.favoriteShow = favoriteShow[index]
+	person.isProgrammer = isProgrammer[index]
+	person.hairColor = hairColor[index]
+	person.motto = motto[index]
+	longBios.push(person)
+}
+console.log(longBios)
